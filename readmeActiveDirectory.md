@@ -60,13 +60,13 @@ Example:
 
 * gleopold
 
-![User Creation](screenshots/03-user-account.png)
+![User Creation](Domain-User.png)
 
 ## DNS Configuration
 
 Verified DNS zone creation and Active Directory integration.
 
-![DNS](screenshots/04-dns-zone.png)
+![DNS](DNS-Zone.png)
 
 ## DHCP Configuration
 
@@ -78,7 +78,7 @@ Configured DHCP scope:
 
 Verified clients received addresses automatically from DC01.
 
-![DHCP Scope](screenshots/05-dhcp-scope.png)
+![DHCP Scope](DHCP-Scope.png)
 
 ## Client Configuration
 
@@ -92,13 +92,13 @@ Successfully joined CLIENT01 to:
 corp.local
 ```
 
-![Domain Join](screenshots/06-domain-join-success.png)
+![Domain Join](Welcome.png)
 
 ### Active Directory Computer Object
 
 Verified CLIENT01 was added to Active Directory.
 
-![Computer Object](screenshots/07-client01-ad-object.png)
+![Computer Object](DomainAuth.png)
 
 ## Authentication Verification
 
