@@ -94,21 +94,15 @@ corp.local
 
 ![Domain Join](Welcome.png)
 
-### Active Directory Computer Object
-
-Verified CLIENT01 was added to Active Directory.
-
-![Computer Object](DomainAuth.png)
-
 ## Authentication Verification
 
 Verified successful domain authentication using:
-
+![Computer Object](DomainAuth.png)
 ```text
 CORP\gleopold
 ```
 
-![Authentication](Domain-User.png)
+
 
 ## Skills Demonstrated
 
