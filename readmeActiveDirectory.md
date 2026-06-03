@@ -26,7 +26,28 @@ The goal of this project is to gain hands-on experience with common Windows Serv
 
 * Windows 11 Pro
 * CLIENT01
-* CLIENT02 (planned)
+* CLIENT02 (Planned)
+
+---
+
+## Network Architecture
+
+```text
+VMware Workstation
+        |
+      VMnet1
+        |
+ ┌─────────────┐
+ │    DC01     │
+ │192.168.60.10
+ │AD / DNS / DHCP
+ └──────┬──────┘
+        |
+ ┌─────────────┐
+ │  CLIENT01   │
+ │192.168.60.101
+ └─────────────┘
+```
 
 ---
 
@@ -64,6 +85,10 @@ The goal of this project is to gain hands-on experience with common Windows Serv
 
 * gleopold
 
+### Domain Computers
+
+* CLIENT01
+
 ---
 
 ## Project Objectives
@@ -89,6 +114,8 @@ The goal of this project is to gain hands-on experience with common Windows Serv
 * Domain Services Deployment
 * DNS Administration
 * DHCP Administration
+* Domain Controller Deployment
+* Domain Join Management
 
 ### Networking
 
@@ -97,30 +124,142 @@ The goal of this project is to gain hands-on experience with common Windows Serv
 * IP Address Management
 * Client-to-Server Connectivity
 * Domain Authentication
+* Network Troubleshooting
+
+---
+
+## Deployment Process
+
+### 1. Windows Server Installation
+
+* Installed Windows Server 2022
+* Assigned static IP address
+* Renamed server to DC01
+
+### 2. Active Directory Deployment
+
+* Installed Active Directory Domain Services
+* Promoted server to Domain Controller
+* Created the corp.local domain
+
+### 3. DNS Configuration
+
+* Configured DNS service
+* Verified Forward Lookup Zone creation
+* Validated name resolution for domain resources
+
+### 4. DHCP Configuration
+
+* Created DHCP scope
+* Configured DNS options
+* Authorized DHCP server
+* Validated automatic client address assignment
+
+### 5. Active Directory Administration
+
+* Created Organizational Units
+* Created domain users
+* Managed computer objects
+
+### 6. Client Deployment
+
+* Installed Windows 11 Pro
+* Joined CLIENT01 to corp.local
+* Verified domain authentication
 
 ---
 
 ## Screenshots
 
-### Active Directory Deployment
+### 1. Active Directory Domain Deployment
 
-*Add screenshots here*
+Successful deployment of the corp.local Active Directory domain.
 
-### DNS Configuration
+![Active Directory Domain](screenshots/01-active-directory-domain.png)
 
-*Add screenshots here*
+---
 
-### DHCP Scope Configuration
+### 2. Organizational Unit Structure
 
-*Add screenshots here*
+Custom Organizational Units created for administrative organization.
 
-### Domain Join Process
+![OU Structure](screenshots/02-ou-structure.png)
 
-*Add screenshots here*
+---
 
-### Domain User Authentication
+### 3. User Account Creation
 
-*Add screenshots here*
+Domain user account created within the IT Organizational Unit.
+
+![User Account](screenshots/03-user-account.png)
+
+---
+
+### 4. DNS Configuration
+
+Forward Lookup Zone configured for corp.local.
+
+![DNS Configuration](screenshots/04-dns-zone.png)
+
+---
+
+### 5. DHCP Scope Configuration
+
+DHCP scope configured to automatically assign IP addresses to clients.
+
+![DHCP Scope](screenshots/05-dhcp-scope.png)
+
+---
+
+### 6. DHCP Lease Assignment
+
+CLIENT01 successfully receiving network configuration from DC01.
+
+![DHCP Lease](screenshots/06-client-ipconfig.png)
+
+---
+
+### 7. Domain Join Success
+
+CLIENT01 successfully joined to the corp.local domain.
+
+![Domain Join](screenshots/07-domain-join-success.png)
+
+---
+
+### 8. Computer Object in Active Directory
+
+CLIENT01 created and managed as an Active Directory computer object.
+
+![Computer Object](screenshots/08-client01-ad-object.png)
+
+---
+
+### 9. Domain User Authentication
+
+Successful authentication using a domain user account.
+
+![Domain Login](screenshots/09-domain-login.png)
+
+---
+
+## Key Takeaways
+
+One of the most important lessons from this project was understanding the dependency chain within enterprise environments:
+
+```text
+Networking
+    ↓
+DHCP
+    ↓
+DNS
+    ↓
+Active Directory
+    ↓
+Authentication
+```
+
+The project demonstrated how Active Directory relies heavily on DNS and networking services. Successful domain joins and user authentication depend on proper DHCP configuration, DNS resolution, and communication with the Domain Controller.
 
 ---
 
@@ -129,13 +268,15 @@ The goal of this project is to gain hands-on experience with common Windows Serv
 * Implement Group Policy Objects (GPOs)
 * Create Security Groups
 * Configure Folder Redirection
-* Add Additional Domain-Joined Clients
+* Add CLIENT02 to the domain
 * Implement Password Policies
-* Create DHCP Reservations
+* Configure DHCP Reservations
 * Deploy Shared Network Resources
+* Configure Network File Shares
+* Implement Role-Based Access Control (RBAC)
 
 ---
 
 ## Author
 
-Built as part of a hands-on Windows Server and Networking lab focused on enterprise infrastructure administration.
+Built as a hands-on Windows Server and Networking project focused on enterprise infrastructure administration, Active Directory, DNS, DHCP, and domain-based authentication.
