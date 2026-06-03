@@ -108,7 +108,7 @@ Verified successful domain authentication using:
 CORP\gleopold
 ```
 
-![Authentication](screenshots/08-domain-login.png)
+![Authentication](Domain-User.png)
 
 ## Skills Demonstrated
 
