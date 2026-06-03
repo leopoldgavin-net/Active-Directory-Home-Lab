@@ -48,7 +48,7 @@ Created Organizational Units for administrative organization.
 
 * IT
 * HR
-* Computers
+* Workstations
 
 ![OU Structure](screenshots/02-ou-structure.png)
 
