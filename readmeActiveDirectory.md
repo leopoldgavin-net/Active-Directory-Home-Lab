@@ -40,7 +40,7 @@ VMnet1
 
 Installed Active Directory Domain Services and promoted DC01 to a Domain Controller for the `corp.local` domain.
 
-![AD Deployment](screenshots/01-active-directory-domain.png)
+![AD Deployment](AD Deployment.png)
 
 ## Organizational Units
 
@@ -50,7 +50,7 @@ Created Organizational Units for administrative organization.
 * HR
 * Workstations
 
-![OU Structure](screenshots/02-ou-structure.png)
+![OU Structure](OU Structure.png)
 
 ## User Management
 
