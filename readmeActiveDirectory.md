@@ -2,281 +2,123 @@
 
 ## Overview
 
-This project demonstrates the deployment and configuration of a Windows-based enterprise environment using VMware Workstation. The lab simulates a small business network and includes Active Directory, DNS, DHCP, domain-joined clients, and centralized user management.
+This project demonstrates the deployment of a Windows Server 2022 Active Directory environment using VMware Workstation.
 
-The goal of this project is to gain hands-on experience with common Windows Server administration tasks used in Help Desk, Systems Administration, Infrastructure Support, and IT Operations roles.
+The main objective was to configure Active Directory Domain Services (AD DS), DNS, and DHCP while managing domain users and joining Windows 11 clients to the domain.
 
----
-
-## Lab Environment
-
-### Hypervisor
-
-* VMware Workstation Pro
-
-### Server
+## Technologies
 
 * Windows Server 2022
-* Domain Controller (DC01)
-* Active Directory Domain Services (AD DS)
-* DNS Server
-* DHCP Server
-
-### Clients
-
 * Windows 11 Pro
-* CLIENT01
-* CLIENT02 (Planned)
-
----
-
-## Network Architecture
-
-```text
-VMware Workstation
-        |
-      VMnet1
-        |
- ┌─────────────┐
- │    DC01     │
- │192.168.60.10
- │AD / DNS / DHCP
- └──────┬──────┘
-        |
- ┌─────────────┐
- │  CLIENT01   │
- │192.168.60.101
- └─────────────┘
-```
-
----
-
-## Network Configuration
-
-### Domain Information
-
-| Setting           | Value                           |
-| ----------------- | ------------------------------- |
-| Domain Name       | corp.local                      |
-| Domain Controller | DC01                            |
-| Server IP         | 192.168.60.10                   |
-| DHCP Scope        | 192.168.60.100 - 192.168.60.200 |
-
-### Services Configured
-
-* Active Directory Domain Services
+* VMware Workstation Pro
+* Active Directory Domain Services (AD DS)
 * DNS
 * DHCP
-* Organizational Units (OUs)
-* User Management
-* Domain Authentication
 
----
+## Topology
 
-## Active Directory Structure
+```text
+VMnet1
+│
+├── DC01
+│   ├── Active Directory
+│   ├── DNS
+│   └── DHCP
+│
+└── CLIENT01
+```
 
-### Organizational Units
+### Network Information
+
+| Device   | IP Address    |
+| -------- | ------------- |
+| DC01     | 192.168.60.10 |
+| CLIENT01 | DHCP Assigned |
+| Domain   | corp.local    |
+
+## Active Directory Deployment
+
+Installed Active Directory Domain Services and promoted DC01 to a Domain Controller for the `corp.local` domain.
+
+![AD Deployment](screenshots/01-active-directory-domain.png)
+
+## Organizational Units
+
+Created Organizational Units for administrative organization.
 
 * IT
 * HR
 * Computers
 
-### Users
+![OU Structure](screenshots/02-ou-structure.png)
+
+## User Management
+
+Created domain user accounts and organized them within Active Directory.
+
+Example:
 
 * gleopold
 
-### Domain Computers
+![User Creation](screenshots/03-user-account.png)
 
-* CLIENT01
+## DNS Configuration
 
----
+Verified DNS zone creation and Active Directory integration.
 
-## Project Objectives
+![DNS](screenshots/04-dns-zone.png)
 
-* Deploy Windows Server 2022
-* Configure a Domain Controller
-* Install and configure Active Directory
-* Configure DNS for domain name resolution
-* Configure DHCP for automatic IP assignment
-* Create Organizational Units and users
-* Join Windows clients to the domain
-* Validate centralized authentication
+## DHCP Configuration
 
----
+Configured DHCP scope:
 
-## Skills Demonstrated
+```text
+192.168.60.100 - 192.168.60.200
+```
 
-### Windows Administration
-
-* Active Directory Administration
-* User and Group Management
-* Organizational Unit Management
-* Domain Services Deployment
-* DNS Administration
-* DHCP Administration
-* Domain Controller Deployment
-* Domain Join Management
-
-### Networking
-
-* DHCP Configuration
-* DNS Configuration
-* IP Address Management
-* Client-to-Server Connectivity
-* Domain Authentication
-* Network Troubleshooting
-
----
-
-## Deployment Process
-
-### 1. Windows Server Installation
-
-* Installed Windows Server 2022
-* Assigned static IP address
-* Renamed server to DC01
-
-### 2. Active Directory Deployment
-
-* Installed Active Directory Domain Services
-* Promoted server to Domain Controller
-* Created the corp.local domain
-
-### 3. DNS Configuration
-
-* Configured DNS service
-* Verified Forward Lookup Zone creation
-* Validated name resolution for domain resources
-
-### 4. DHCP Configuration
-
-* Created DHCP scope
-* Configured DNS options
-* Authorized DHCP server
-* Validated automatic client address assignment
-
-### 5. Active Directory Administration
-
-* Created Organizational Units
-* Created domain users
-* Managed computer objects
-
-### 6. Client Deployment
-
-* Installed Windows 11 Pro
-* Joined CLIENT01 to corp.local
-* Verified domain authentication
-
----
-
-## Screenshots
-
-### 1. Active Directory Domain Deployment
-
-Successful deployment of the corp.local Active Directory domain.
-
-![Active Directory Domain](screenshots/01-active-directory-domain.png)
-
----
-
-### 2. Organizational Unit Structure
-
-Custom Organizational Units created for administrative organization.
-
-![OU Structure](screenshots/02-ou-structure.png)
-
----
-
-### 3. User Account Creation
-
-Domain user account created within the IT Organizational Unit.
-
-![User Account](screenshots/03-user-account.png)
-
----
-
-### 4. DNS Configuration
-
-Forward Lookup Zone configured for corp.local.
-
-![DNS Configuration](screenshots/04-dns-zone.png)
-
----
-
-### 5. DHCP Scope Configuration
-
-DHCP scope configured to automatically assign IP addresses to clients.
+Verified clients received addresses automatically from DC01.
 
 ![DHCP Scope](screenshots/05-dhcp-scope.png)
 
----
+## Client Configuration
 
-### 6. DHCP Lease Assignment
+Installed Windows 11 Pro and joined CLIENT01 to the domain.
 
-CLIENT01 successfully receiving network configuration from DC01.
+### Domain Join
 
-![DHCP Lease](screenshots/06-client-ipconfig.png)
-
----
-
-### 7. Domain Join Success
-
-CLIENT01 successfully joined to the corp.local domain.
-
-![Domain Join](screenshots/07-domain-join-success.png)
-
----
-
-### 8. Computer Object in Active Directory
-
-CLIENT01 created and managed as an Active Directory computer object.
-
-![Computer Object](screenshots/08-client01-ad-object.png)
-
----
-
-### 9. Domain User Authentication
-
-Successful authentication using a domain user account.
-
-![Domain Login](screenshots/09-domain-login.png)
-
----
-
-## Key Takeaways
-
-One of the most important lessons from this project was understanding the dependency chain within enterprise environments:
+Successfully joined CLIENT01 to:
 
 ```text
-Networking
-    ↓
-DHCP
-    ↓
-DNS
-    ↓
-Active Directory
-    ↓
-Authentication
+corp.local
 ```
 
-The project demonstrated how Active Directory relies heavily on DNS and networking services. Successful domain joins and user authentication depend on proper DHCP configuration, DNS resolution, and communication with the Domain Controller.
+![Domain Join](screenshots/06-domain-join-success.png)
 
----
+### Active Directory Computer Object
 
-## Future Enhancements
+Verified CLIENT01 was added to Active Directory.
 
-* Implement Group Policy Objects (GPOs)
-* Create Security Groups
-* Configure Folder Redirection
-* Add CLIENT02 to the domain
-* Implement Password Policies
-* Configure DHCP Reservations
-* Deploy Shared Network Resources
-* Configure Network File Shares
-* Implement Role-Based Access Control (RBAC)
+![Computer Object](screenshots/07-client01-ad-object.png)
 
----
+## Authentication Verification
 
-## Author
+Verified successful domain authentication using:
 
-Built as a hands-on Windows Server and Networking project focused on enterprise infrastructure administration, Active Directory, DNS, DHCP, and domain-based authentication.
+```text
+CORP\gleopold
+```
+
+![Authentication](screenshots/08-domain-login.png)
+
+## Skills Demonstrated
+
+* Active Directory Administration
+* DNS Configuration
+* DHCP Configuration
+* Domain Controller Deployment
+* User and Computer Management
+* Organizational Unit Management
+* Windows Server Administration
+* Domain Join Troubleshooting
+* VMware Virtualization
+* Network Services Troubleshooting
