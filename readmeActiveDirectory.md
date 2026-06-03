@@ -97,11 +97,11 @@ corp.local
 ## Authentication Verification
 
 Verified successful domain authentication using:
-![Computer Object](DomainAuth.png)
+
 ```text
 CORP\gleopold
 ```
-
+![Computer Object](DomainAuth.png)
 
 
 ## Skills Demonstrated
